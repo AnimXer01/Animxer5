@@ -7,7 +7,13 @@ function App() {
     <BrowserRouter>
       <NavigationBar />
       <Routes>
-        <Route path="/" exact element={<Home />} />
+        <Route path="/" element={<Home />}>
+          <Route index element={<Home />} />
+          <Route path="/:page" element={<Home />} />
+          <Route path="top" element={<Home />} />
+          <Route path="latest-episodes" element={<Home />} />
+          <Route path="/search/:query" element={<Home />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

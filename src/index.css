@@ -20,6 +20,11 @@ body {
   #root {
     width: 100%;
   }
+  .pagination-custom button,
+  .pagination-custom div {
+    min-width: 25px;
+    height: 25px !important;
+  }
 }
 
 :root {
@@ -42,6 +47,9 @@ body {
   opacity: 0.7;
   letter-spacing: 0.7px !important;
 }
+.anime-link.active {
+  opacity: 1;
+}
 .anime-link:hover {
   opacity: 1;
   transform: scale(1.03);
@@ -55,4 +63,14 @@ body {
 .social-link:hover {
   transform: scale(1.03);
   color: var(--primary-color) !important;
+}
+
+.pagination-custom button,
+.pagination-custom div {
+  color: #fff !important;
+}
+.pagination-custom {
+  padding: 10px;
+  display: flex;
+  justify-content: end;
 }
