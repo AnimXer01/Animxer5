@@ -23,7 +23,7 @@ const SearchBar = () => {
         border: "1px solid #23202a",
         pl: 2,
         boxShadow: "none",
-        width: { xs: "calc(100% / 2.5)", md: "calc(100% / 5)" },
+        width: { xs: "calc(100% / 2)", md: "calc(100% / 4)" },
         height: "40px",
         display: "flex",
         alignItems: "center",
