@@ -59,20 +59,6 @@ const Home = () => {
         setAnimes(res?.data?.results ? res?.data?.results : []);
         return;
       });
-    } else if (
-      (!query && location.pathname.startsWith("/recent-anime")) ||
-      location.pathname.startsWith("/recent-anime&page=")
-    ) {
-      makeRequest(`/recent-episodes`, "GET", {
-        page: page ? page : 1,
-        type: type,
-      }).then((res) => {
-        if (res?.data?.hasNextPage) {
-          setMaxPages(maxPages + 1);
-        }
-        setAnimes(res?.data?.results ? res?.data?.results : []);
-        return;
-      });
     } else if (query) {
       makeRequest(`/${query}`, "GET", {
         page: page ? page : 1,
@@ -111,11 +97,13 @@ const Home = () => {
       >
         {isSearching && (
           <Typography
-            variant="subtitle1"
+            variant="subtitle2"
             sx={{
               color: "var(--primary-color)",
               textTransform: "uppercase",
               fontWeight: "500",
+              width: { xs: "50px", md: "auto" },
+              textAlign: { xs: "center" },
             }}
           >
             Search Result
@@ -144,19 +132,13 @@ const Home = () => {
           >
             Top
           </Button>
-          <Button
-            className={`anime-link ${
-              location.pathname === "/latest-anime" ||
-              location.pathname.startsWith("/latest-anime&page=")
-                ? `active`
-                : ``
-            }`}
-            href="latest-anime"
-          >
-            Latest Animes
-          </Button>
         </Box>
-        <Box>
+        <Box
+          sx={{
+            display: { xs: "grid", md: "flex" },
+            gridTemplateColumns: "50% 50%",
+          }}
+        >
           <Button className="social-link" startIcon={<FacebookIcon />} />
           <Button className="social-link" startIcon={<GitHubIcon />} />
           <Button className="social-link" startIcon={<EmailIcon />} />
@@ -175,7 +157,7 @@ const Home = () => {
             display: "flex",
             gap: "5px",
             justifyContent: { xs: "center" },
-            margin: { xs: "10px auto" },
+            marginTop: "10px",
             marginLeft: { xs: "0", md: "10px" },
             scale: { xs: "0.9" },
           }}
@@ -222,6 +204,14 @@ const Home = () => {
             ? true
             : false
         }
+      />
+      <Pagination
+        count={maxPages}
+        shape="rounded"
+        color="secondary"
+        className="pagination-custom"
+        onChange={handleChangePage}
+        page={page ? page : 1}
       />
     </Box>
   );

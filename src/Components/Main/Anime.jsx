@@ -9,7 +9,8 @@ const Anime = ({ animes, isSearch }) => {
       sx={{
         padding: { xs: "5px 10px", md: "5px 20px" },
         gap: { xs: "20px", md: "30px" },
-        justifyContent: { xs: "start", md: "center" },
+        justifyContent: "center",
+        minHeight: "100vh",
       }}
     >
       {animes.map((anime) => (

@@ -36,6 +36,8 @@ const AnimeInfo = () => {
             fontWeight: "500",
             letterSpacing: "1px",
             marginLeft: "10px",
+            width: { xs: "50px", md: "auto" },
+            textAlign: { xs: "center" },
           }}
         >
           Anime Info
@@ -63,17 +65,6 @@ const AnimeInfo = () => {
           >
             Top
           </Button>
-          <Button
-            className={`anime-link ${
-              location.pathname === "/latest-anime" ||
-              location.pathname.startsWith("/latest-anime?page=")
-                ? `active`
-                : ``
-            }`}
-            href="/latest-anime"
-          >
-            Latest Animes
-          </Button>
         </Box>
         <Box
           sx={{
@@ -93,8 +84,8 @@ const AnimeInfo = () => {
           image={animeInfo.image}
           alt={animeInfo.title}
           sx={{
-            height: "auto",
-            width: { xs: "230px", md: "350px", sm: "300px" },
+            height: { xs: "150px", md: "350px", sm: "300px" },
+            width: { xs: "150px", md: "350px", sm: "300px" },
             borderRadius: "5px",
             margin: "10px",
           }}
@@ -117,7 +108,7 @@ const AnimeInfo = () => {
             }}
           >
             <Typography
-              variant="h5"
+              variant={{ xs: "subtitle1", sm: "h6", md: "h5" }}
               textAlign="center"
               sx={{ margin: "10px 0" }}
             >
@@ -140,22 +131,24 @@ const AnimeInfo = () => {
             </Typography>
           </Box>
           <Typography
-            variant="subtitle2"
             sx={{
               width: "100%",
               textAlign: "center",
               opacity: "0.7",
               margin: "0 10px",
               wordBreak: "break-all",
+              fontSize: { xs: "10px", sm: "13px", md: "15px" },
             }}
           >
             {animeInfo.otherName}
           </Typography>
-          <Typography variant="subtitle1">
+          <Typography sx={{ fontSize: { xs: "10px", sm: "13px", md: "15px" } }}>
             Released: {animeInfo.releaseDate}
           </Typography>
-          <Typography variant="subtitle1">Type: {animeInfo.type}</Typography>
-          <Typography variant="subtitle1">
+          <Typography sx={{ fontSize: { xs: "10px", sm: "13px", md: "15px" } }}>
+            Type: {animeInfo.type}
+          </Typography>
+          <Typography sx={{ fontSize: { xs: "10px", sm: "13px", md: "15px" } }}>
             Genre:
             {animeInfo?.genres?.map((genre, index) => {
               if (index === 0) {
@@ -165,13 +158,16 @@ const AnimeInfo = () => {
               }
             })}
           </Typography>
-          <Typography variant="subtitle1">
+          <Typography sx={{ fontSize: { xs: "10px", sm: "13px", md: "15px" } }}>
             Status: {animeInfo.status}
           </Typography>
-          <Typography variant="subtitle1">
+          <Typography sx={{ fontSize: { xs: "10px", sm: "13px", md: "15px" } }}>
             Episodes: {animeInfo.totalEpisodes}
           </Typography>
-          <Typography variant="h6">
+          <Typography
+            variant="h6"
+            sx={{ display: { xs: "none", sm: "none", md: "block" } }}
+          >
             Description: <br />
           </Typography>
           <Typography
@@ -182,11 +178,41 @@ const AnimeInfo = () => {
               overflowY: "auto",
               margin: { xs: "0", md: "0 15px" },
               marginBottom: "10px",
+              display: { xs: "none", sm: "none", md: "block" },
             }}
           >
             {animeInfo.description}
           </Typography>
         </Box>
+      </Box>
+      <Box
+        sx={{
+          display: { xs: "block", sm: "block", md: "none" },
+          color: "var(--primary-color)",
+          padding: "5px",
+        }}
+      >
+        <Typography
+          variant="subtitle1"
+          sx={{ display: { xs: "block", sm: "block", md: "none" } }}
+        >
+          Description: <br />
+        </Typography>
+        <Typography
+          className="scrollbar-hidden"
+          variant="subtitle2"
+          sx={{
+            maxHeight: "95px",
+            overflowY: "hidden",
+            margin: { xs: "0", md: "0 15px" },
+            marginBottom: "10px",
+            display: { xs: "block", sm: "block", md: "none" },
+            fontWeight: "500",
+            padding: "5px",
+          }}
+        >
+          {animeInfo.description}
+        </Typography>
       </Box>
     </Box>
   );

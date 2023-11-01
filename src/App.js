@@ -11,7 +11,6 @@ function App() {
           <Route index element={<Home />} />
           <Route path="/:page" element={<Home />} />
           <Route path="top&:page" element={<Home />} />
-          <Route path="latest-episodes?:page" element={<Home />} />
           <Route path="/search/:query" element={<Home />} />
           <Route path="/search/:query/:page" element={<Home />} />
         </Route>
