@@ -18,7 +18,7 @@ body {
 }
 @media screen and (max-width: 900px) {
   #root {
-    width: 100%;
+    width: 95%;
   }
   .pagination-custom button,
   .pagination-custom div {
@@ -33,6 +33,7 @@ body {
   --secondary-color: #cccccc;
   --accent-color: #3498db;
   --button-color: #8c51df;
+  --hightlight-button: #b27cfd;
 }
 
 .search-bar {
@@ -73,4 +74,15 @@ body {
   padding: 10px;
   display: flex;
   justify-content: end;
+}
+.episode-link {
+  color: var(--primary-color) !important;
+  opacity: 0.8;
+}
+.episode-link:hover {
+  color: var(--hightlight-button) !important;
+  opacity: 1;
+}
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
 }
