@@ -108,14 +108,16 @@ const AnimeInfo = () => {
             }}
           >
             <Typography
-              variant={{ xs: "subtitle1", sm: "h6", md: "h5" }}
               textAlign="center"
-              sx={{ margin: "10px 0" }}
+              sx={{
+                marginTop: "10px",
+                fontSize: { xs: "12px", sm: "15px", md: "18px" },
+              }}
             >
               {animeInfo.title}
             </Typography>
             <Typography
-              variant="subtitle1"
+              variant="subtitle2"
               backgroundColor={
                 animeInfo.subOrDub === "sub" ? "orange" : "green"
               }
@@ -135,9 +137,8 @@ const AnimeInfo = () => {
               width: "100%",
               textAlign: "center",
               opacity: "0.7",
-              margin: "0 10px",
               wordBreak: "break-all",
-              fontSize: { xs: "10px", sm: "13px", md: "15px" },
+              fontSize: { xs: "8px", sm: "10px", md: "12px" },
             }}
           >
             {animeInfo.otherName}
@@ -174,7 +175,7 @@ const AnimeInfo = () => {
             className="scrollbar-hidden"
             variant="subtitle1"
             sx={{
-              maxHeight: "200px",
+              maxHeight: "165px",
               overflowY: "auto",
               margin: { xs: "0", md: "0 15px" },
               marginBottom: "10px",
@@ -203,7 +204,7 @@ const AnimeInfo = () => {
           variant="subtitle2"
           sx={{
             maxHeight: "95px",
-            overflowY: "hidden",
+            overflowY: "auto",
             margin: { xs: "0", md: "0 15px" },
             marginBottom: "10px",
             display: { xs: "block", sm: "block", md: "none" },
