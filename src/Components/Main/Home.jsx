@@ -140,7 +140,7 @@ const Home = () => {
                 ? `active`
                 : ``
             }`}
-            href="/top"
+            href="top"
           >
             Top
           </Button>
@@ -151,7 +151,7 @@ const Home = () => {
                 ? `active`
                 : ``
             }`}
-            href="/latest-anime"
+            href="latest-anime"
           >
             Latest Animes
           </Button>
