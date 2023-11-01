@@ -85,7 +85,7 @@ const Home = () => {
   }, [query, location, page, type]);
 
   return (
-    <Box sx={{ background: "#fff1", minHeight: "80vh" }}>
+    <Box sx={{ background: "#fff1", minHeight: "80vh", borderRadius: "10px" }}>
       <Box
         sx={{
           display: "flex",
@@ -162,27 +162,33 @@ const Home = () => {
             scale: { xs: "0.9" },
           }}
         >
-          <Button
-            variant="contained"
-            color="secondary"
-            onClick={() => setType(1)}
-          >
-            JP Sub
-          </Button>
-          <Button
-            variant="contained"
-            color="secondary"
-            onClick={() => setType(2)}
-          >
-            Eng Dub
-          </Button>
-          <Button
-            variant="contained"
-            color="secondary"
-            onClick={() => setType(3)}
-          >
-            Chinese
-          </Button>
+          {location.pathname !== "/top" &&
+            !location.pathname.startsWith("/top&page=") &&
+            !isSearching && (
+              <>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  onClick={() => setType(1)}
+                >
+                  JP Sub
+                </Button>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  onClick={() => setType(2)}
+                >
+                  Eng Dub
+                </Button>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  onClick={() => setType(3)}
+                >
+                  Chinese
+                </Button>
+              </>
+            )}
         </Box>
         <Pagination
           count={maxPages}
