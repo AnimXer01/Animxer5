@@ -8,18 +8,22 @@ function App() {
     <BrowserRouter>
       <NavigationBar />
       <Routes>
-        <Route path={`${webURL}/`} element={<Home />}>
+        <Route path={`/${webURL}/`} element={<Home />}>
           <Route index element={<Home />} />
-          <Route path={`${webURL}/:page`} element={<Home />} />
-          <Route path={`${webURL}/top&:page`} element={<Home />} />
-          <Route path={`${webURL}/search/:query`} element={<Home />} />
-          <Route path={`${webURL}/search/:query/:page`} element={<Home />} />
+          <Route path={`/${webURL}/:page`} element={<Home />} />
+          <Route path={`/${webURL}/top&:page`} element={<Home />} />
+          <Route path={`/${webURL}/search/:query`} element={<Home />} />
+          <Route path={`/${webURL}/search/:query/:page`} element={<Home />} />
         </Route>
 
-        <Route path={`${webURL}/info/:animeId`} exact element={<AnimeInfo />} />
+        <Route
+          path={`/${webURL}/info/:animeId`}
+          exact
+          element={<AnimeInfo />}
+        />
 
         <Route
-          path={`${webURL}/:animeId/watch/:episodeId`}
+          path={`/${webURL}/:animeId/watch/:episodeId`}
           exact
           element={<Watch />}
         />
