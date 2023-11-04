@@ -8,5 +8,8 @@
     "main.cecbdd44.js.map": "/AnimeSensei/static/js/main.cecbdd44.js.map",
     "787.662c186c.chunk.js.map": "/AnimeSensei/static/js/787.662c186c.chunk.js.map"
   },
-  "entrypoints": ["static/css/main.79cc1b68.css", "static/js/main.cecbdd44.js"]
+  "entrypoints": [
+    "/AnimeSensei/static/css/main.79cc1b68.css",
+    "/AnimeSensei/static/js/main.cecbdd44.js"
+  ]
 }
