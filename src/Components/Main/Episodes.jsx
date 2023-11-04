@@ -65,7 +65,7 @@ const Episodes = ({ episodes }) => {
                 return (
                   <Link
                     key={episode.number}
-                    to={`AnimeSensei/${animeId}/watch/${episode.id}`}
+                    to={`/AnimeSensei/${animeId}/watch/${episode.id}`}
                   >
                     <Box className="episode-link watch-link">
                       <Typography

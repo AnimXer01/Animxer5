@@ -16,7 +16,7 @@ const SearchBar = () => {
     <Paper
       component="form"
       onSubmit={() => {
-        navigate(`search/${search}`);
+        navigate(`/AnimeSensei/search/${search}`);
       }}
       sx={{
         borderRadius: 1,

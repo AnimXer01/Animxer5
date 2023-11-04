@@ -10,6 +10,7 @@ function App() {
         <Route path="/AnimeSensei" element={<Home />}>
           <Route index element={<Home />} />
           <Route path="/AnimeSensei/:page" element={<Home />} />
+          <Route path="/AnimeSensei/top" element={<Home />} />
           <Route path="/AnimeSensei/top&:page" element={<Home />} />
           <Route path="/AnimeSensei/search/:query" element={<Home />} />
           <Route path="/AnimeSensei/search/:query/:page" element={<Home />} />

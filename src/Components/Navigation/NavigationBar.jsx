@@ -14,7 +14,7 @@ const NavigationBar = () => {
         width: "100%",
       }}
     >
-      <Link to="/">
+      <Link to="/AnimeSensei">
         <Typography
           variant="h6"
           sx={{ color: "var(--primary-color)", fontWeight: 550 }}
