@@ -6,7 +6,7 @@ import EmailIcon from "@mui/icons-material/Email";
 import { useState, useEffect } from "react";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
 import { makeRequest } from "../../Utils/request";
-import { Anime } from "../";
+import { Anime, Footer } from "../";
 
 const Home = () => {
   let { page } = useParams();
@@ -92,7 +92,7 @@ const Home = () => {
           alignItems: "center",
           justifyContent: "space-between",
           borderBottom: "1px solid #fff1",
-          padding: "5px 10px",
+          padding: { xs: "3px 10px", md: "10px" },
         }}
       >
         {isSearching && (

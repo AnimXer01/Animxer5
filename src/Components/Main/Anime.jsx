@@ -48,7 +48,7 @@ const Anime = ({ animes, isSearch }) => {
             </Typography>
           </Link>
           {!isSearch && (
-            <Link className="episode-link">
+            <Link to={`/watch/${anime.episodeId}`} className="episode-link">
               <Typography
                 variant="subtitle2"
                 sx={{

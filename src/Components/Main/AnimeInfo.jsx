@@ -1,11 +1,12 @@
 import { Box, Typography, CardMedia, Button } from "@mui/material";
-import { useLocation, useParams, useNavigate } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import EmailIcon from "@mui/icons-material/Email";
 import { useEffect, useState } from "react";
 import { makeRequest } from "../../Utils/request";
+import { Episodes } from "../";
 
 const AnimeInfo = () => {
   const location = useLocation();
@@ -16,16 +17,15 @@ const AnimeInfo = () => {
     makeRequest(`/info/${id}`, "GET").then((res) => setAnimeInfo(res?.data));
   }, [id]);
 
-  console.log(animeInfo);
   return (
-    <Box sx={{ background: "#fff1", minHeight: "80vh" }}>
+    <Box sx={{ background: "#fff1", minHeight: "80vh", borderRadius: "10px" }}>
       <Box
         sx={{
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
           borderBottom: "1px solid #fff1",
-          padding: "5px 10px",
+          padding: { xs: "3px 10px", md: "10px" },
         }}
       >
         <Typography
@@ -35,7 +35,7 @@ const AnimeInfo = () => {
             textTransform: "uppercase",
             fontWeight: "500",
             letterSpacing: "1px",
-            marginLeft: "10px",
+            margin: "0 10px",
             width: { xs: "50px", md: "auto" },
             textAlign: { xs: "center" },
           }}
@@ -51,6 +51,7 @@ const AnimeInfo = () => {
                 : ``
             }`}
             href="/"
+            sx={{ fontSize: "80%" }}
           >
             Recents
           </Button>
@@ -62,6 +63,7 @@ const AnimeInfo = () => {
                 : ``
             }`}
             href="/top"
+            sx={{ fontSize: "80%" }}
           >
             Top
           </Button>
@@ -105,13 +107,13 @@ const AnimeInfo = () => {
               justifyContent: "center",
               alignItems: "center",
               gap: "3px",
+              marginTop: "10px",
             }}
           >
             <Typography
               textAlign="center"
               sx={{
-                marginTop: "10px",
-                fontSize: { xs: "12px", sm: "15px", md: "18px" },
+                fontSize: { xs: "80%", sm: "18px", md: "22px" },
               }}
             >
               {animeInfo.title}
@@ -126,7 +128,7 @@ const AnimeInfo = () => {
                 padding: "3px 12px",
                 borderRadius: "5px",
                 margin: "0 3px",
-                display: { xs: "none", sm: "none", md: "flex" },
+                display: { xs: "none", sm: "flex", md: "flex" },
               }}
             >
               {animeInfo.subOrDub}
@@ -143,7 +145,12 @@ const AnimeInfo = () => {
           >
             {animeInfo.otherName}
           </Typography>
-          <Typography sx={{ fontSize: { xs: "10px", sm: "13px", md: "15px" } }}>
+          <Typography
+            sx={{
+              fontSize: { xs: "10px", sm: "13px", md: "15px" },
+              marginTop: "5px",
+            }}
+          >
             Released: {animeInfo.releaseDate}
           </Typography>
           <Typography sx={{ fontSize: { xs: "10px", sm: "13px", md: "15px" } }}>
@@ -166,7 +173,7 @@ const AnimeInfo = () => {
             Episodes: {animeInfo.totalEpisodes}
           </Typography>
           <Typography
-            variant="h6"
+            variant="subtitle1"
             sx={{ display: { xs: "none", sm: "none", md: "block" } }}
           >
             Description: <br />
@@ -194,27 +201,41 @@ const AnimeInfo = () => {
         }}
       >
         <Typography
-          variant="subtitle1"
-          sx={{ display: { xs: "block", sm: "block", md: "none" } }}
+          variant="subtitle2"
+          sx={{
+            display: { xs: "block", sm: "block", md: "none" },
+            fontWeight: 400,
+          }}
         >
-          Description: <br />
+          Summary: <br />
         </Typography>
         <Typography
-          className="scrollbar-hidden"
-          variant="subtitle2"
+          className="custom-scrollbar"
           sx={{
             maxHeight: "95px",
             overflowY: "auto",
             margin: { xs: "0", md: "0 15px" },
             marginBottom: "10px",
             display: { xs: "block", sm: "block", md: "none" },
-            fontWeight: "500",
+            fontWeight: "300",
             padding: "5px",
+            fontSize: "12px",
           }}
         >
           {animeInfo.description}
         </Typography>
       </Box>
+      <Typography
+        sx={{
+          fontWeight: 400,
+          color: "var(--primary-color)",
+          fontSize: { xs: "15px", sm: "18px", md: "20px" },
+          margin: { xs: "5px", md: "0 10px" },
+        }}
+      >
+        Episodes: <br />
+      </Typography>
+      <Episodes episodes={animeInfo?.episodes} />
     </Box>
   );
 };

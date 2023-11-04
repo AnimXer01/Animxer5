@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Home, NavigationBar, AnimeInfo } from "./Components";
+import { Home, NavigationBar, AnimeInfo, Footer, Watch } from "./Components";
 import "./index.css";
 
 function App() {
@@ -16,7 +16,10 @@ function App() {
         </Route>
 
         <Route path="/info/:id" exact element={<AnimeInfo />} />
+
+        <Route path="/watch/:episodeId" exact element={<Watch />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
