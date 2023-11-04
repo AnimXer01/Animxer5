@@ -191,7 +191,7 @@ const Home = () => {
             )}
         </Box>
         <Pagination
-          count={maxPages}
+          count={maxPages + 2}
           shape="rounded"
           color="secondary"
           className="pagination-custom"
@@ -212,7 +212,7 @@ const Home = () => {
         }
       />
       <Pagination
-        count={maxPages}
+        count={maxPages + 2}
         shape="rounded"
         color="secondary"
         className="pagination-custom"

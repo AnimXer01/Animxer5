@@ -11,14 +11,23 @@ import { Episodes } from "../";
 const AnimeInfo = () => {
   const location = useLocation();
   const [animeInfo, setAnimeInfo] = useState({});
-  const { id } = useParams();
+  const { animeId } = useParams();
 
   useEffect(() => {
-    makeRequest(`/info/${id}`, "GET").then((res) => setAnimeInfo(res?.data));
-  }, [id]);
+    makeRequest(`/info/${animeId}`, "GET").then((res) =>
+      setAnimeInfo(res?.data)
+    );
+  }, [animeId]);
 
   return (
-    <Box sx={{ background: "#fff1", minHeight: "80vh", borderRadius: "10px" }}>
+    <Box
+      sx={{
+        background: "#fff1",
+        minHeight: "50vh",
+        borderRadius: "10px",
+        paddingBottom: "5px",
+      }}
+    >
       <Box
         sx={{
           display: "flex",
@@ -83,8 +92,8 @@ const AnimeInfo = () => {
       <Box sx={{ display: "flex" }}>
         <CardMedia
           component="img"
-          image={animeInfo.image}
-          alt={animeInfo.title}
+          image={animeInfo?.image}
+          alt={animeInfo?.title}
           sx={{
             height: { xs: "150px", md: "350px", sm: "300px" },
             width: { xs: "150px", md: "350px", sm: "300px" },
@@ -116,12 +125,12 @@ const AnimeInfo = () => {
                 fontSize: { xs: "80%", sm: "18px", md: "22px" },
               }}
             >
-              {animeInfo.title}
+              {animeInfo?.title}
             </Typography>
             <Typography
               variant="subtitle2"
               backgroundColor={
-                animeInfo.subOrDub === "sub" ? "orange" : "green"
+                animeInfo?.subOrDub === "sub" ? "orange" : "green"
               }
               sx={{
                 textTransform: "uppercase",
@@ -131,7 +140,7 @@ const AnimeInfo = () => {
                 display: { xs: "none", sm: "flex", md: "flex" },
               }}
             >
-              {animeInfo.subOrDub}
+              {animeInfo?.subOrDub}
             </Typography>
           </Box>
           <Typography
@@ -143,7 +152,7 @@ const AnimeInfo = () => {
               fontSize: { xs: "8px", sm: "10px", md: "12px" },
             }}
           >
-            {animeInfo.otherName}
+            {animeInfo?.otherName}
           </Typography>
           <Typography
             sx={{
@@ -151,10 +160,10 @@ const AnimeInfo = () => {
               marginTop: "5px",
             }}
           >
-            Released: {animeInfo.releaseDate}
+            Released: {animeInfo?.releaseDate}
           </Typography>
           <Typography sx={{ fontSize: { xs: "10px", sm: "13px", md: "15px" } }}>
-            Type: {animeInfo.type}
+            Type: {animeInfo?.type}
           </Typography>
           <Typography sx={{ fontSize: { xs: "10px", sm: "13px", md: "15px" } }}>
             Genre:
@@ -167,10 +176,10 @@ const AnimeInfo = () => {
             })}
           </Typography>
           <Typography sx={{ fontSize: { xs: "10px", sm: "13px", md: "15px" } }}>
-            Status: {animeInfo.status}
+            Status: {animeInfo?.status}
           </Typography>
           <Typography sx={{ fontSize: { xs: "10px", sm: "13px", md: "15px" } }}>
-            Episodes: {animeInfo.totalEpisodes}
+            Episodes: {animeInfo?.totalEpisodes}
           </Typography>
           <Typography
             variant="subtitle1"
@@ -189,7 +198,11 @@ const AnimeInfo = () => {
               display: { xs: "none", sm: "none", md: "block" },
             }}
           >
-            {animeInfo.description}
+            {animeInfo?.description === "Plot Summary:" ||
+            animeInfo?.description === "" ||
+            !animeInfo?.description
+              ? "No summary provided."
+              : animeInfo?.description}
           </Typography>
         </Box>
       </Box>
@@ -210,7 +223,7 @@ const AnimeInfo = () => {
           Summary: <br />
         </Typography>
         <Typography
-          className="custom-scrollbar"
+          className="scrollbar-hidden"
           sx={{
             maxHeight: "95px",
             overflowY: "auto",
@@ -222,7 +235,11 @@ const AnimeInfo = () => {
             fontSize: "12px",
           }}
         >
-          {animeInfo.description}
+          {animeInfo?.description === "Plot Summary:" ||
+          animeInfo?.description === "" ||
+          !animeInfo?.description
+            ? "No summary provided."
+            : animeInfo?.description}
         </Typography>
       </Box>
       <Typography

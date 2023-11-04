@@ -1,8 +1,9 @@
 import { Box, Stack, Typography, Button } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
 
 const Episodes = ({ episodes }) => {
+  const { animeId } = useParams();
   const [maxEpisodes, setMaxEpisodes] = useState(99);
   const [minEpisodes, setMinEpisodes] = useState(-1); // Changed minEpisodes to 0
   const itemsPerPage = 99;
@@ -30,10 +31,9 @@ const Episodes = ({ episodes }) => {
       </Button>
     );
   });
-  console.log(episodes);
   return (
     <>
-      <Box>{filterButtons}</Box>
+      {episodes?.length > itemsPerPage && <Box>{filterButtons}</Box>}
       <Stack
         className="scrollbar-hidden"
         sx={{
@@ -44,31 +44,41 @@ const Episodes = ({ episodes }) => {
             md: "12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5%",
           },
           gap: 1,
-          padding: { xs: "5px 10px", md: "10px 20px" },
+          margin: { xs: "0 0 10px 0", md: "10px 20px" },
           justifyContent: "center",
+
           maxHeight: { xs: "200px", md: "400px" },
           overflowY: "auto",
+          gridAutoColumns: "column-reverse",
         }}
       >
         {episodes?.length === 0 ? (
-          <Typography variant="h6">There are no episodes found.</Typography>
+          <Typography variant="subtitle2" color="#fff">
+            There are no episodes found.
+          </Typography>
         ) : (
-          episodes?.map((episode, index) => {
-            if (index >= minEpisodes && index <= maxEpisodes) {
-              return (
-                <Link key={episode.number} to={`/watch/${episode.id}`}>
-                  <Box className="episode-link watch-link">
-                    <Typography
-                      variant="subtitle2"
-                      sx={{ color: "var(--button-color)" }}
-                    >
-                      Episode {episode.number}
-                    </Typography>
-                  </Box>
-                </Link>
-              );
-            }
-          })
+          episodes
+            ?.slice()
+            .reverse()
+            .map((episode, index) => {
+              if (index >= minEpisodes && index <= maxEpisodes) {
+                return (
+                  <Link
+                    key={episode.number}
+                    to={`AnimeSensei/${animeId}/watch/${episode.id}`}
+                  >
+                    <Box className="episode-link watch-link">
+                      <Typography
+                        variant="subtitle2"
+                        sx={{ color: "var(--button-color)" }}
+                      >
+                        Episode {episode.number}
+                      </Typography>
+                    </Box>
+                  </Link>
+                );
+              }
+            })
         )}
       </Stack>
     </>

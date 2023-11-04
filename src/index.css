@@ -104,7 +104,15 @@ body {
 }
 
 #video-player {
-  width: 90%;
-  height: 100%;
+  width: 95%;
   margin: 0 auto;
+  margin-top: 5px;
+  border-radius: 5px;
+}
+
+.quality-select svg {
+  color: #fff;
+}
+.quality-select fieldset {
+  border: none;
 }
