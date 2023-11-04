@@ -3,27 +3,26 @@ import { Home, NavigationBar, AnimeInfo, Footer, Watch } from "./Components";
 import "./index.css";
 
 function App() {
-  const webURL = "renskiedulog.github.io/AnimeSensei";
   return (
     <BrowserRouter>
       <NavigationBar />
       <Routes>
-        <Route path={`/${webURL}/`} element={<Home />}>
+        <Route path="/AnimeSensei" element={<Home />}>
           <Route index element={<Home />} />
-          <Route path={`/${webURL}/:page`} element={<Home />} />
-          <Route path={`/${webURL}/top&:page`} element={<Home />} />
-          <Route path={`/${webURL}/search/:query`} element={<Home />} />
-          <Route path={`/${webURL}/search/:query/:page`} element={<Home />} />
+          <Route path="/AnimeSensei/:page" element={<Home />} />
+          <Route path="/AnimeSensei/top&:page" element={<Home />} />
+          <Route path="/AnimeSensei/search/:query" element={<Home />} />
+          <Route path="/AnimeSensei/search/:query/:page" element={<Home />} />
         </Route>
 
         <Route
-          path={`/${webURL}/info/:animeId`}
+          path="/AnimeSensei/info/:animeId"
           exact
           element={<AnimeInfo />}
         />
 
         <Route
-          path={`/${webURL}/:animeId/watch/:episodeId`}
+          path="/AnimeSensei/:animeId/watch/:episodeId"
           exact
           element={<Watch />}
         />
