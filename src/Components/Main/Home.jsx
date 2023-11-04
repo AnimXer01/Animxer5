@@ -117,7 +117,7 @@ const Home = () => {
                 ? `active`
                 : ``
             }`}
-            href="/AnimeSensei"
+            href="/"
           >
             Recents
           </Button>
@@ -128,7 +128,7 @@ const Home = () => {
                 ? `active`
                 : ``
             }`}
-            href="/AnimeSensei/top"
+            href="/top"
           >
             Top
           </Button>

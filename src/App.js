@@ -7,26 +7,18 @@ function App() {
     <BrowserRouter>
       <NavigationBar />
       <Routes>
-        <Route path="/AnimeSensei" element={<Home />}>
+        <Route path="" element={<Home />}>
           <Route index element={<Home />} />
-          <Route path="/AnimeSensei/:page" element={<Home />} />
-          <Route path="/AnimeSensei/top" element={<Home />} />
-          <Route path="/AnimeSensei/top&:page" element={<Home />} />
-          <Route path="/AnimeSensei/search/:query" element={<Home />} />
-          <Route path="/AnimeSensei/search/:query/:page" element={<Home />} />
+          <Route path="/:page" element={<Home />} />
+          <Route path="/top" element={<Home />} />
+          <Route path="/top&:page" element={<Home />} />
+          <Route path="/search/:query" element={<Home />} />
+          <Route path="/search/:query/:page" element={<Home />} />
         </Route>
 
-        <Route
-          path="/AnimeSensei/info/:animeId"
-          exact
-          element={<AnimeInfo />}
-        />
+        <Route path="/info/:animeId" exact element={<AnimeInfo />} />
 
-        <Route
-          path="/AnimeSensei/:animeId/watch/:episodeId"
-          exact
-          element={<Watch />}
-        />
+        <Route path="/:animeId/watch/:episodeId" exact element={<Watch />} />
       </Routes>
       <Footer />
     </BrowserRouter>

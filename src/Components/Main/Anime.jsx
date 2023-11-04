@@ -19,7 +19,7 @@ const Anime = ({ animes, isSearch }) => {
           sx={{ display: "flex", flexDirection: "column" }}
         >
           <Link
-            to={`/AnimeSensei/info/${anime.id}`}
+            to={`/info/${anime.id}`}
             title={anime.title}
             className="anime-link"
           >
@@ -49,7 +49,7 @@ const Anime = ({ animes, isSearch }) => {
           </Link>
           {!isSearch && (
             <Link
-              to={`/AnimeSensei/${anime.id}/watch/${anime.episodeId}`}
+              to={`/${anime.id}/watch/${anime.episodeId}`}
               className="episode-link"
             >
               <Typography
