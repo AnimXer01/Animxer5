@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/AnimeSensei/static/css/main.79cc1b68.css",
+    "main.js": "/AnimeSensei/static/js/main.1ff2d349.js",
+    "static/js/787.662c186c.chunk.js": "/AnimeSensei/static/js/787.662c186c.chunk.js",
+    "index.html": "/index.html",
+    "main.79cc1b68.css.map": "/AnimeSensei/static/css/main.79cc1b68.css.map",
+    "main.1ff2d349.js.map": "/AnimeSensei/static/js/main.1ff2d349.js.map",
+    "787.662c186c.chunk.js.map": "/AnimeSensei/static/js/787.662c186c.chunk.js.map"
+  },
+  "entrypoints": [
+    "/AnimeSensei/static/css/main.79cc1b68.css",
+    "/AnimeSensei/static/js/main.1ff2d349.js"
+  ]
+}
