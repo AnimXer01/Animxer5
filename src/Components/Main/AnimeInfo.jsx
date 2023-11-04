@@ -6,7 +6,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import EmailIcon from "@mui/icons-material/Email";
 import { useEffect, useState } from "react";
 import { makeRequest } from "../../Utils/request";
-import { Episodes } from "../";
+import { Episodes, Header } from "../";
 
 const AnimeInfo = () => {
   const location = useLocation();
@@ -28,67 +28,7 @@ const AnimeInfo = () => {
         paddingBottom: "5px",
       }}
     >
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          borderBottom: "1px solid #fff1",
-          padding: { xs: "3px 10px", md: "10px" },
-        }}
-      >
-        <Typography
-          variant="subtitle2"
-          sx={{
-            color: "var(--primary-color)",
-            textTransform: "uppercase",
-            fontWeight: "500",
-            letterSpacing: "1px",
-            margin: "0 10px",
-            width: { xs: "50px", md: "auto" },
-            textAlign: { xs: "center" },
-          }}
-        >
-          Anime Info
-        </Typography>
-        <Box>
-          <Button
-            className={`anime-link ${
-              location.pathname === "/" ||
-              location.pathname.startsWith("/page=")
-                ? `active`
-                : ``
-            }`}
-            href="/"
-            sx={{ fontSize: "80%" }}
-          >
-            Recents
-          </Button>
-          <Button
-            className={`anime-link ${
-              location.pathname === "/top" ||
-              location.pathname.startsWith("/top?page=")
-                ? `active`
-                : ``
-            }`}
-            href="/top"
-            sx={{ fontSize: "80%" }}
-          >
-            Top
-          </Button>
-        </Box>
-        <Box
-          sx={{
-            display: { xs: "grid", md: "block" },
-            gridTemplateColumns: "50% 50%",
-          }}
-        >
-          <Button className="social-link" startIcon={<FacebookIcon />} />
-          <Button className="social-link" startIcon={<GitHubIcon />} />
-          <Button className="social-link" startIcon={<EmailIcon />} />
-          <Button className="social-link" startIcon={<TwitterIcon />} />
-        </Box>
-      </Box>
+      <Header isInfo={true} />
       <Box sx={{ display: "flex" }}>
         <CardMedia
           component="img"

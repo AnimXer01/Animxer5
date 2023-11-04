@@ -12,7 +12,7 @@ import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { makeRequest } from "../../Utils/request";
 import DownloadIcon from "@mui/icons-material/Download";
-import { Episodes } from "../";
+import { Episodes, Header } from "../";
 
 const Watch = () => {
   const { episodeId, animeId } = useParams();
@@ -73,6 +73,7 @@ const Watch = () => {
         paddingBottom: "3px",
       }}
     >
+      <Header />
       <Box
         sx={{
           padding: "3px 12px",

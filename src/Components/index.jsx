@@ -12,3 +12,4 @@ export { default as BackToTop } from "./Navigation/BackToTop";
 
 // ! Extra
 export { default as Footer } from "./Extra/Footer";
+export { default as Header } from "./Extra/Header";
