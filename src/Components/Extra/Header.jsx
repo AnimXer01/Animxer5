@@ -4,6 +4,7 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import EmailIcon from "@mui/icons-material/Email";
 import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Header = ({ isSearching, isInfo }) => {
   const location = useLocation();
@@ -48,27 +49,28 @@ const Header = ({ isSearching, isInfo }) => {
         </Typography>
       )}
       <Box>
-        <Button
+        <Link
           className={`anime-link ${
             location.pathname === "/" || location.pathname.startsWith("/page=")
               ? `active`
               : ``
           }`}
-          href="/AnimeSensei"
+          to="/"
         >
           Recents
-        </Button>
-        <Button
+        </Link>
+        <Link
           className={`anime-link ${
             location.pathname === "/top" ||
             location.pathname.startsWith("/top&page=")
               ? `active`
               : ``
           }`}
-          href="/AnimeSensei/top"
+          to="/top"
+          sx={{ fontSize: { Xs: "" } }}
         >
           Top
-        </Button>
+        </Link>
       </Box>
       <Box
         sx={{
