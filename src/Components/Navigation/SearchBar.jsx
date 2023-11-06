@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Paper, IconButton } from "@mui/material";
 import { Search } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 
 const SearchBar = () => {
   const [search, setSearch] = useState("");
@@ -16,7 +17,7 @@ const SearchBar = () => {
     <Paper
       component="form"
       onSubmit={() => {
-        navigate(`/search/${search}`);
+        document.querySelector(".search-query").click();
       }}
       sx={{
         borderRadius: 1,
@@ -31,6 +32,7 @@ const SearchBar = () => {
         background: "transparent",
       }}
     >
+      <Link className="search-query" to={`/search/${search}`} />
       <input
         className="search-bar"
         placeholder="Search..."

@@ -8,11 +8,11 @@ const Anime = ({ animes, isSearch }) => {
       sx={{
         display: "grid",
         gridTemplateColumns: {
-          xs: "40% 40%",
+          xs: "47% 47%",
           sm: "20% 20% 20% 20%",
           md: "18% 18% 18% 18% 18%",
         },
-        gap: 2,
+        gap: { xs: 1, md: 2 },
         margin: { xs: "0 0 10px 0", md: "10px 20px" },
         justifyContent: "center",
         gridAutoColumns: "column-reverse",
