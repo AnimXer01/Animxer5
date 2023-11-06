@@ -117,3 +117,11 @@ body {
 .quality-select fieldset {
   border: none;
 }
+.search-query {
+  padding: 10px;
+  position: absolute;
+  right: 0;
+}
+.search-query button {
+  color: var(--button-color);
+}
