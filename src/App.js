@@ -4,7 +4,7 @@ import "./index.css";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="AnimeSensei">
       <NavigationBar />
       <Routes>
         <Route path="" element={<Home />}>
