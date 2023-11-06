@@ -54,7 +54,7 @@ const Header = ({ isSearching, isInfo }) => {
               ? `active`
               : ``
           }`}
-          href="/"
+          href="/AnimeSensei"
         >
           Recents
         </Button>
@@ -65,7 +65,7 @@ const Header = ({ isSearching, isInfo }) => {
               ? `active`
               : ``
           }`}
-          href="/top"
+          href="/AnimeSensei/top"
         >
           Top
         </Button>

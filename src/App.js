@@ -7,7 +7,7 @@ function App() {
     <BrowserRouter basename="AnimeSensei">
       <NavigationBar />
       <Routes>
-        <Route path="" element={<Home />}>
+        <Route path="/" element={<Home />}>
           <Route index element={<Home />} />
           <Route path="/:page" element={<Home />} />
           <Route path="/top" element={<Home />} />
