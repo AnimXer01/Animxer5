@@ -4,13 +4,18 @@ import { Link } from "react-router-dom";
 const Anime = ({ animes, isSearch }) => {
   return (
     <Stack
-      direction="row"
-      flexWrap="wrap"
+      className="scrollbar-hidden"
       sx={{
-        padding: { xs: "5px 10px", md: "5px 20px" },
-        gap: { xs: "20px", md: "30px" },
+        display: "grid",
+        gridTemplateColumns: {
+          xs: "40% 40%",
+          sm: "20% 20% 20% 20%",
+          md: "18% 18% 18% 18% 18%",
+        },
+        gap: 2,
+        margin: { xs: "0 0 10px 0", md: "10px 20px" },
         justifyContent: "center",
-        minHeight: "100vh",
+        gridAutoColumns: "column-reverse",
       }}
     >
       {animes.map((anime) => (
@@ -28,15 +33,15 @@ const Anime = ({ animes, isSearch }) => {
               image={anime.image}
               alt={anime.title}
               sx={{
-                width: { xs: "130px", md: "150px" },
-                height: "200px",
+                width: "100%",
+                height: "210px",
                 borderRadius: "5px",
               }}
             ></CardMedia>
             <Typography
               variant="subtitle2"
               sx={{
-                width: { xs: "130px", md: "150px" },
+                width: "100%",
                 wordWrap: "break-word",
                 textAlign: "center",
                 margin: "5px 0",
@@ -56,7 +61,7 @@ const Anime = ({ animes, isSearch }) => {
                 variant="subtitle2"
                 sx={{
                   textAlign: "center",
-                  width: { xs: "130px", md: "150px" },
+                  width: "100%",
                 }}
               >
                 Episode {anime.episodeNumber}

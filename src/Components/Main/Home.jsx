@@ -20,6 +20,7 @@ const Home = () => {
   const [animes, setAnimes] = useState([]);
   const [maxPages, setMaxPages] = useState(page ? page : 1);
   const [type, setType] = useState(1);
+  const [loading, setLoading] = useState(false);
 
   const location = useLocation();
   const isSearching = location.pathname.includes("/search/");
@@ -40,6 +41,7 @@ const Home = () => {
 
   useEffect(() => {
     setAnimes([]);
+    setLoading(true);
     if (
       (!query && location.pathname.startsWith("/top")) ||
       location.pathname.startsWith("/top&page=")
@@ -48,12 +50,11 @@ const Home = () => {
         page: page ? page : 1,
         type: type,
       }).then((res) => {
-        console.log(res);
         if (res?.data?.hasNextPage) {
           setMaxPages(maxPages + 1);
         }
         setAnimes(res?.data?.results ? res?.data?.results : []);
-        return;
+        setLoading(false);
       });
     } else if (query) {
       makeRequest(`/${query}`, "GET", {
@@ -64,7 +65,7 @@ const Home = () => {
           setMaxPages(maxPages + 1);
         }
         setAnimes(res?.data?.results ? res?.data?.results : []);
-        return;
+        setLoading(false);
       });
     } else {
       makeRequest(`/recent-episodes`, "GET", {
@@ -75,13 +76,20 @@ const Home = () => {
           setMaxPages(maxPages + 1);
         }
         setAnimes(res?.data?.results ? res?.data?.results : []);
-        return;
+        setLoading(false);
       });
     }
   }, [query, location, page, type]);
 
   return (
-    <Box sx={{ background: "#fff1", minHeight: "80vh", borderRadius: "10px" }}>
+    <Box
+      sx={{
+        background: "#fff1",
+        minHeight: "80vh",
+        borderRadius: "10px",
+        paddingBottom: "5px",
+      }}
+    >
       <Header isSearching={isSearching} />
       <Box
         sx={{
@@ -128,35 +136,59 @@ const Home = () => {
               </>
             )}
         </Box>
-        <Pagination
-          count={maxPages + 2}
-          shape="rounded"
-          color="secondary"
-          className="pagination-custom"
-          onChange={handleChangePage}
-          page={page ? page : 1}
-        />
+        {animes.length === 20 && (
+          <Pagination
+            count={maxPages + 2}
+            shape="rounded"
+            color="secondary"
+            className="pagination-custom"
+            onChange={handleChangePage}
+            page={page ? page : 1}
+          />
+        )}
       </Box>
-      <Anime
-        animes={animes}
-        isSearch={
-          query ||
-          location.pathname === "/latest-anime" ||
-          location.pathname.startsWith("/latest-anime?page=") ||
-          location.pathname === "/top" ||
-          location.pathname.startsWith("/top&page=")
-            ? true
-            : false
-        }
-      />
-      <Pagination
-        count={maxPages + 2}
-        shape="rounded"
-        color="secondary"
-        className="pagination-custom"
-        onChange={handleChangePage}
-        page={page ? page : 1}
-      />
+      {!loading && (
+        <>
+          {animes.length > 1 ? (
+            <Anime
+              animes={animes}
+              isSearch={
+                query ||
+                location.pathname === "/latest-anime" ||
+                location.pathname.startsWith("/latest-anime?page=") ||
+                location.pathname === "/top" ||
+                location.pathname.startsWith("/top&page=")
+                  ? true
+                  : false
+              }
+            />
+          ) : (
+            <Typography
+              variant="h6"
+              sx={{
+                width: "100%",
+                height: "60vh",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "var(--primary-color)",
+              }}
+            >
+              No results found.
+            </Typography>
+          )}
+          {animes.length === 20 && (
+            <Pagination
+              count={maxPages + 2}
+              shape="rounded"
+              color="secondary"
+              className="pagination-custom"
+              onChange={handleChangePage}
+              page={page ? page : 1}
+            />
+          )}
+        </>
+      )}
     </Box>
   );
 };
