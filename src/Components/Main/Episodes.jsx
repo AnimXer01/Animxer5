@@ -26,6 +26,7 @@ const Episodes = ({ episodes }) => {
         key={index}
         className="anime-link"
         onClick={() => handleFilter(start, end)}
+        sx={{ margin: "5px 3px 0 0", width: "100%" }}
       >
         {label}
       </Button>
@@ -33,7 +34,24 @@ const Episodes = ({ episodes }) => {
   });
   return (
     <>
-      {episodes?.length > itemsPerPage && <Box>{filterButtons}</Box>}
+      {episodes?.length > itemsPerPage && (
+        <Box
+          className="scrollbar-hidden"
+          sx={{
+            display: "grid",
+            justifyContent: "center",
+            overflowY: "auto",
+            gridTemplateColumns: {
+              xs: "30% 30% 30%",
+              md: "20% 20% 20% 20% 20%",
+            },
+            height: "50px",
+            padding: "0 30px",
+          }}
+        >
+          {filterButtons}
+        </Box>
+      )}
       <Stack
         className="scrollbar-hidden"
         sx={{
@@ -57,28 +75,25 @@ const Episodes = ({ episodes }) => {
             There are no episodes found.
           </Typography>
         ) : (
-          episodes
-            ?.slice()
-            .reverse()
-            .map((episode, index) => {
-              if (index >= minEpisodes && index <= maxEpisodes) {
-                return (
-                  <Link
-                    key={episode.number}
-                    to={`/${animeId}/watch/${episode.id}`}
-                  >
-                    <Box className="episode-link watch-link">
-                      <Typography
-                        variant="subtitle2"
-                        sx={{ color: "var(--button-color)" }}
-                      >
-                        Episode {episode.number}
-                      </Typography>
-                    </Box>
-                  </Link>
-                );
-              }
-            })
+          episodes?.map((episode, index) => {
+            if (index >= minEpisodes && index <= maxEpisodes) {
+              return (
+                <Link
+                  key={episode.number}
+                  to={`/${animeId}/watch/${episode.id}`}
+                >
+                  <Box className="episode-link watch-link">
+                    <Typography
+                      variant="subtitle2"
+                      sx={{ color: "var(--button-color)" }}
+                    >
+                      Episode {episode.number}
+                    </Typography>
+                  </Box>
+                </Link>
+              );
+            }
+          })
         )}
       </Stack>
     </>

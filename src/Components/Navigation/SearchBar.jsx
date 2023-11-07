@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Paper, IconButton } from "@mui/material";
 import { Search } from "@mui/icons-material";
@@ -6,12 +6,19 @@ import { Link } from "react-router-dom";
 
 const SearchBar = () => {
   const [search, setSearch] = useState("");
-  const navigate = useNavigate();
 
   const handleOnChange = (event) => {
     const { value } = event.target;
     setSearch(value);
   };
+
+  useEffect(() => {
+    window.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        document.querySelector("a.search-query").click();
+      }
+    });
+  });
 
   return (
     <Paper
