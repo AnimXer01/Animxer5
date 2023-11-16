@@ -85,7 +85,7 @@ const Home = () => {
     <Box
       sx={{
         background: "#fff1",
-        minHeight: "80vh",
+        minHeight: "50vh",
         borderRadius: "10px",
         paddingBottom: "5px",
       }}
@@ -136,7 +136,7 @@ const Home = () => {
               </>
             )}
         </Box>
-        {animes.length === 20 && (
+        {animes.length === (location.pathname.startsWith("/top") ? 10 : 20) && (
           <Pagination
             count={maxPages + 2}
             shape="rounded"
@@ -177,7 +177,7 @@ const Home = () => {
               No results found.
             </Typography>
           )}
-          {animes.length === 20 && (
+          {animes.length === (location.pathname.startsWith("/top") ? 10 : 20) && (
             <Pagination
               count={maxPages + 2}
               shape="rounded"

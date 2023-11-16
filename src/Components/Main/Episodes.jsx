@@ -23,7 +23,7 @@ const Episodes = ({ episodes }) => {
 
     return (
       <Button
-        key={index}
+        key={`button-${index}`}
         className="anime-link"
         onClick={() => handleFilter(start, end)}
         sx={{ margin: "5px 3px 0 0", width: "100%" }}
@@ -64,7 +64,6 @@ const Episodes = ({ episodes }) => {
           gap: 1,
           margin: { xs: "0 0 10px 0", md: "10px 20px" },
           justifyContent: "center",
-
           maxHeight: { xs: "200px", md: "400px" },
           overflowY: "auto",
           gridAutoColumns: "column-reverse",
@@ -79,7 +78,7 @@ const Episodes = ({ episodes }) => {
             if (index >= minEpisodes && index <= maxEpisodes) {
               return (
                 <Link
-                  key={episode.number}
+                  key={episode?.number}
                   to={`/${animeId}/watch/${episode.id}`}
                 >
                   <Box className="episode-link watch-link">

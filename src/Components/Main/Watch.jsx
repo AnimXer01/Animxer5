@@ -8,7 +8,7 @@ import {
   Select,
   InputLabel,
 } from "@mui/material";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { makeRequest } from "../../Utils/request";
 import DownloadIcon from "@mui/icons-material/Download";
@@ -17,7 +17,7 @@ import { Episodes, Header } from "../";
 const Watch = () => {
   const { episodeId, animeId } = useParams();
   const [episode, setEpisode] = useState([]);
-  const [currentServer, setCurrentServer] = useState("vidstreaming");
+  const currentServer = "vidstreaming";
   const [quality, setQuality] = useState("default");
   const [episodeName, setEpisodeName] = useState("");
   const [episodesList, setEpisodesList] = useState([]);

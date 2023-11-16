@@ -18,9 +18,9 @@ const Anime = ({ animes, isSearch }) => {
         gridAutoColumns: "column-reverse",
       }}
     >
-      {animes.map((anime) => (
+      {animes.map((anime,index) => (
         <Box
-          key={anime.title}
+          key={index}
           sx={{ display: "flex", flexDirection: "column" }}
         >
           <Link

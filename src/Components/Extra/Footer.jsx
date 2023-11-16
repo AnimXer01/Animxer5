@@ -12,7 +12,8 @@ const Footer = () => (
     }}
   >
     <Typography variant="subtitle2">
-      © AnimeSensei 2023. All rights reserved.
+      © AnimeSensei 2023. All rights reserved. <br />
+      No copyrights intended. This is solely for the purpose of learning and education. Any exploit of the work is prohibited.
     </Typography>
   </Box>
 );

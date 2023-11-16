@@ -1,9 +1,5 @@
 import { Box, Typography, CardMedia, Button } from "@mui/material";
 import { useLocation, useParams } from "react-router-dom";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import EmailIcon from "@mui/icons-material/Email";
 import { useEffect, useState } from "react";
 import { makeRequest } from "../../Utils/request";
 import { Episodes, Header } from "../";
