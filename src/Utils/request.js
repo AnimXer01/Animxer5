@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-const baseUrl = `https://api.consumet.org/anime/gogoanime`;
+const baseUrl = `https://anime-sensei-api.vercel.app/anime/gogoanime`;
 export const makeRequest = async (endpoint, method = "GET", params = {}) => {
   try {
     const res = await axios({
